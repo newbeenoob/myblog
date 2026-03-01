@@ -1,0 +1,544 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 271.5 81.3% 55.9%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 172 66% 50%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 271.5 81.3% 55.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 271.5 81.3% 55.9%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 172 66% 50%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 271.5 81.3% 55.9%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.2);
+    color: hsl(var(--primary));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted-foreground) / 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--muted-foreground) / 0.4);
+}
+
+/* Glass effect */
+.glass {
+  background-color: hsl(var(--background) / 0.7);
+  backdrop-filter: blur(24px);
+  border: 1px solid hsl(var(--border) / 0.5);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Article prose styles */
+.prose-custom {
+  max-width: none;
+}
+
+.prose-custom h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+
+.prose-custom h1:first-child {
+  margin-top: 0;
+}
+
+.prose-custom h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.prose-custom h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.prose-custom p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+.prose-custom a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+
+.prose-custom a:hover {
+  color: hsl(var(--primary) / 0.8);
+}
+
+.prose-custom code {
+  background-color: hsl(var(--muted));
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: monospace;
+}
+
+.prose-custom pre {
+  background-color: hsl(var(--muted) / 0.5);
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.prose-custom pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.prose-custom ul,
+.prose-custom ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.prose-custom li {
+  margin-bottom: 0.5rem;
+}
+
+.prose-custom blockquote {
+  border-left: 4px solid hsl(var(--primary) / 0.5);
+  padding-left: 1rem;
+  font-style: italic;
+  color: hsl(var(--muted-foreground));
+  margin: 1rem 0;
+}
+
+/* Animation utilities */
+.animate-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animate-delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Marquee animations for tags */
+@keyframes marquee-ltr {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-rtl {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-ltr {
+  animation: marquee-ltr 30s linear infinite;
+  width: max-content;
+}
+
+.animate-marquee-rtl {
+  animation: marquee-rtl 30s linear infinite;
+  width: max-content;
+}
+
+/* Paused state for hover */
+.animation-paused {
+  animation-play-state: paused !important;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-ltr,
+  .animate-marquee-rtl {
+    animation: none;
+  }
+}
+
+/* ========================================
+   Map Marker Breathing Animation
+   ======================================== */
+
+/* Marker container */
+.custom-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.marker-container {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-container.static {
+  width: 24px;
+  height: 24px;
+}
+
+/* Center dot */
+.marker-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #3b82f6;
+  border-radius: 50%;
+  z-index: 3;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.6);
+}
+
+.marker-container.static .marker-dot {
+  width: 14px;
+  height: 14px;
+  background: #3b82f6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
+}
+
+/* Dark mode marker */
+.dark .marker-dot {
+  background: #60a5fa;
+  box-shadow: 0 0 8px rgba(96, 165, 250, 0.8);
+}
+
+/* Breathing ring animation */
+.marker-ring {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(59, 130, 246, 0.5);
+  border-radius: 50%;
+  animation: marker-pulse 2s ease-out infinite;
+  z-index: 2;
+}
+
+.dark .marker-ring {
+  border-color: rgba(96, 165, 250, 0.5);
+}
+
+/* Glow layer */
+.marker-glow {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: marker-glow 2s ease-in-out infinite;
+  z-index: 1;
+}
+
+.dark .marker-glow {
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.4) 0%, transparent 70%);
+}
+
+@keyframes marker-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes marker-glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Respect reduced motion for marker */
+@media (prefers-reduced-motion: reduce) {
+  .marker-ring,
+  .marker-glow {
+    animation: none;
+  }
+
+  .marker-ring {
+    transform: scale(1.5);
+    opacity: 0.3;
+  }
+
+  .marker-glow {
+    opacity: 0.3;
+  }
+}
+
+/* ========================================
+   Cloud Animation (for map overlay)
+   ======================================== */
+
+.cloud-overlay {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.cloud {
+  position: absolute;
+  width: 150%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.4) 0%, transparent 50%);
+  filter: blur(20px);
+  opacity: 0.6;
+}
+
+.cloud-1 {
+  top: -30%;
+  left: -25%;
+  animation: cloud-drift-1 25s linear infinite;
+}
+
+.cloud-2 {
+  bottom: -30%;
+  right: -25%;
+  animation: cloud-drift-2 30s linear infinite;
+  animation-delay: -10s;
+}
+
+.dark .cloud {
+  background: radial-gradient(ellipse at center, rgba(100,116,139,0.3) 0%, transparent 50%);
+  opacity: 0.4;
+}
+
+@keyframes cloud-drift-1 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(30%) translateY(10%);
+  }
+}
+
+@keyframes cloud-drift-2 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-30%) translateY(-10%);
+  }
+}
+
+/* ========================================
+   Plane Animation (for map overlay)
+   ======================================== */
+
+.plane-overlay {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.plane {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: plane-fly 15s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes plane-fly {
+  0% {
+    left: -5%;
+    top: 80%;
+    transform: rotate(-20deg) scale(0.8);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  45% {
+    left: 50%;
+    top: 30%;
+    transform: rotate(-20deg) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    left: 110%;
+    top: -10%;
+    transform: rotate(-20deg) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* Respect reduced motion for overlays */
+@media (prefers-reduced-motion: reduce) {
+  .cloud,
+  .plane {
+    animation: none;
+  }
+
+  .cloud {
+    opacity: 0.2;
+  }
+
+  .plane {
+    display: none;
+  }
+}
+
+/* ========================================
+   Leaflet Map Overrides
+   ======================================== */
+
+.leaflet-container {
+  font-family: inherit;
+}
+
+.leaflet-control-attribution {
+  display: none;
+}
+
+/* Fix Leaflet tile rendering */
+.leaflet-tile-pane {
+  filter: grayscale(0.1) brightness(0.98);
+}
+
+.dark .leaflet-tile-pane {
+  filter: grayscale(0.3) brightness(0.7) invert(1) hue-rotate(180deg);
+}
+
+/* Dark mode tile fix */
+.dark .leaflet-tile {
+  filter: brightness(0.8) contrast(1.1) saturate(0.8);
+}
+
+/* ========================================
+   Orbit Animation (for About page hero)
+   ======================================== */
+
+@keyframes orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Respect reduced motion for orbit */
+@media (prefers-reduced-motion: reduce) {
+  *[style*="orbit-rotate"] {
+    animation: none !important;
+  }
+}
