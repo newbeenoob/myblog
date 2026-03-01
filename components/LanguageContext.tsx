@@ -74,6 +74,17 @@ const translations: Record<Language, Record<string, string>> = {
     "map.title": "现居地",
     "map.location": "中国 · 广东 · 广州",
     "map.loading": "加载中...",
+    // Footer
+    "footer.brand": "安德鲁的产品思考",
+    "footer.description": "在技术语言和业务语言的交汇处，记录思考、分享产品见解、探索创新。",
+    "footer.nav": "导航",
+    "footer.resources": "资源",
+    "footer.rss": "RSS 订阅",
+    "footer.sitemap": "站点地图",
+    "footer.copyright": "© {{year}} 安德鲁的产品思考. All rights reserved.",
+    "footer.builtWith": "Built with",
+    "footer.love": "♥",
+    "footer.tech": "using Next.js & Tailwind CSS",
   },
   en: {
     // Navigation
@@ -134,6 +145,21 @@ const translations: Record<Language, Record<string, string>> = {
     "articles.latest": "Latest Articles",
     "articles.subtitle": "Exploring technology, sharing thoughts",
     "articles.viewAll": "View All",
+    // Map
+    "map.title": "Current Location",
+    "map.location": "China · Guangdong · Guangzhou",
+    "map.loading": "Loading...",
+    // Footer
+    "footer.brand": "Andrew's Product Thoughts",
+    "footer.description": "Bridging technology and business, sharing product insights and exploring innovation.",
+    "footer.nav": "Navigation",
+    "footer.resources": "Resources",
+    "footer.rss": "RSS Feed",
+    "footer.sitemap": "Sitemap",
+    "footer.copyright": "© {{year}} Andrew's Product Thoughts. All rights reserved.",
+    "footer.builtWith": "Built with",
+    "footer.love": "♥",
+    "footer.tech": "using Next.js & Tailwind CSS",
   },
 };
 

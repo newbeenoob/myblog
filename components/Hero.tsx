@@ -3,18 +3,21 @@
 import { motion } from "framer-motion";
 import Typewriter from "./Typewriter";
 import TagMarquee from "./TagMarquee";
+import { useLanguage } from "./LanguageContext";
 
 const roles = [
-  "B端产品经理新人",
-  "终身学习者",
-  "生活记录者",
-  "关注用户价值",
-  "关注AI技术",
+  "role.pm",
+  "role.learner",
+  "role.recorder",
+  "role.uservalue",
+  "role.aitech",
 ];
 
 
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
@@ -72,9 +75,9 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold mb-4"
         >
-          <span className="gradient-text">安德鲁</span>
+          <span className="gradient-text">{t('hero.name')}</span>
           <span className="text-muted-foreground font-normal text-2xl sm:text-3xl md:text-4xl ml-2">
-            / Andrew
+            {t('hero.nameEn')}
           </span>
         </motion.h1>
 
@@ -95,9 +98,9 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed"
         >
-          在代码与生活的交汇处，记录思考、分享技术、探索未知。
+          {t('hero.description')}
           <br />
-          每一行代码都是一次对话，每一篇文章都是一次沉淀。
+          {t('hero.description2')}
         </motion.p>
 
         {/* Tags */}
@@ -121,13 +124,13 @@ export default function Hero() {
             href="/articles"
             className="px-8 py-3 rounded-lg font-medium bg-gradient-to-r from-primary to-primary/80 text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5"
           >
-            浏览文章
+            {t('hero.browseArticles')}
           </a>
           <a
             href="/resume"
             className="px-8 py-3 rounded-lg font-medium border border-border hover:border-primary/50 hover:bg-muted/50 transition-all duration-300"
           >
-            查看履历
+            {t('hero.viewResume')}
           </a>
         </motion.div>
       </div>

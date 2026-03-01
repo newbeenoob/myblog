@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "./LanguageContext";
 
 interface TypewriterProps {
   words: string[];
@@ -16,12 +17,13 @@ export default function Typewriter({
   deletingSpeed = 50,
   pauseDuration = 2000,
 }: TypewriterProps) {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const currentWord = words[currentIndex];
+    const currentWord = t(words[currentIndex]);
 
     const timeout = setTimeout(
       () => {
@@ -52,6 +54,7 @@ export default function Typewriter({
     typingSpeed,
     deletingSpeed,
     pauseDuration,
+    t,
   ]);
 
   return (

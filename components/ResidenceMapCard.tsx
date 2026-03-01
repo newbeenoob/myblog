@@ -4,6 +4,7 @@ import { useEffect, useState, useMemo } from "react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { useLanguage } from "./LanguageContext";
 
 interface ResidenceMapCardProps {
   enableClouds?: boolean;
@@ -47,6 +48,7 @@ export default function ResidenceMapCard({
   enableClouds = false,
   enablePlane = false,
 }: ResidenceMapCardProps) {
+  const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
@@ -77,7 +79,7 @@ export default function ResidenceMapCard({
   return (
     <div className="w-full max-w-[60%] mx-auto">
       {/* Title */}
-      <h2 className="text-3xl font-serif font-bold mb-4 text-center">现居地</h2>
+      <h2 className="text-3xl font-serif font-bold mb-4 text-center">{t('map.title')}</h2>
 
       {/* Map Card */}
       <div className="relative w-full aspect-[3/2] sm:aspect-[16/9] rounded-xl border border-border/50 bg-card shadow-lg overflow-hidden">
@@ -122,7 +124,7 @@ export default function ResidenceMapCard({
 
       {/* Location label */}
       <p className="text-muted-foreground text-sm mt-2 text-center">
-        中国 · 广东 · 广州
+        {t('map.location')}
       </p>
     </div>
   );

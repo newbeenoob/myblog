@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useLanguage } from "./LanguageContext";
 
 const socialLinks = [
   {
@@ -48,23 +49,24 @@ const socialLinks = [
 
 const footerLinks = [
   {
-    title: "导航",
+    title: "footer.nav",
     links: [
-      { name: "首页", href: "/" },
-      { name: "文章", href: "/articles" },
-      { name: "履历", href: "/resume" },
+      { name: "nav.home", href: "/" },
+      { name: "nav.articles", href: "/articles" },
+      { name: "nav.resume", href: "/resume" },
     ],
   },
   {
-    title: "资源",
+    title: "footer.resources",
     links: [
-      { name: "RSS 订阅", href: "/rss.xml" },
-      { name: "站点地图", href: "/sitemap.xml" },
+      { name: "footer.rss", href: "/rss.xml" },
+      { name: "footer.sitemap", href: "/sitemap.xml" },
     ],
   },
 ];
 
 export default function Footer() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -78,11 +80,11 @@ export default function Footer() {
                 A
               </div>
               <span className="font-serif text-lg font-semibold">
-                安德鲁的沉思录
+                {t('footer.brand')}
               </span>
             </Link>
             <p className="text-muted-foreground mb-4 max-w-sm">
-              在代码与生活的交汇处，记录思考、分享技术、探索未知。
+              {t('footer.description')}
             </p>
             <div className="flex space-x-3">
               {socialLinks.map((link) => (
@@ -105,7 +107,7 @@ export default function Footer() {
           {/* Links */}
           {footerLinks.map((section) => (
             <div key={section.title}>
-              <h3 className="font-semibold mb-3">{section.title}</h3>
+              <h3 className="font-semibold mb-3">{t(section.title)}</h3>
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.name}>
@@ -113,7 +115,7 @@ export default function Footer() {
                       href={link.href}
                       className="text-muted-foreground hover:text-foreground transition-colors"
                     >
-                      {link.name}
+                      {t(link.name)}
                     </Link>
                   </li>
                 ))}
@@ -125,11 +127,12 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-8 pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} 安德鲁的沉思录. All rights reserved.
+            {t('footer.copyright').replace('{{year}}', currentYear.toString())}
           </p>
           <p className="text-sm text-muted-foreground">
-            Built with{" "}
-            <span className="text-red-500">♥</span> using Next.js & Tailwind CSS
+            {t('footer.builtWith')}
+            <span className="text-red-500">{t('footer.love')}</span>
+            {t('footer.tech')}
           </p>
         </div>
       </div>
