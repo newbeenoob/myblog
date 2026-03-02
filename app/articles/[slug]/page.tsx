@@ -62,6 +62,10 @@ export default function ArticlePage({ params }: PageProps) {
     let inCodeBlock = false;
     let codeContent = "";
     let codeLanguage = "";
+    let inTable = false;
+    let tableHeaders: string[] = [];
+    let tableRows: string[][] = [];
+    let currentTableRow: string[] = [];
 
     lines.forEach((line, index) => {
       // Code blocks
@@ -89,6 +93,61 @@ export default function ArticlePage({ params }: PageProps) {
         return;
       }
 
+      // Tables
+      if (line.includes("|")) {
+        // Check if it's a table header or row
+        const cells = line.split("|").map(cell => cell.trim()).filter(cell => cell);
+        if (cells.length > 0) {
+          // Check if it's a separator line
+          if (line.includes("---")) {
+            inTable = true;
+            return;
+          } else if (inTable && tableHeaders.length === 0) {
+            tableHeaders = cells;
+            return;
+          } else if (inTable) {
+            tableRows.push(cells);
+            return;
+          }
+        }
+      }
+
+      // End of table
+      if (inTable && line.trim() === "") {
+        inTable = false;
+        // Render table
+        elements.push(
+          <div key={index} className="overflow-x-auto my-6">
+            <table className="min-w-full border-collapse border border-border">
+              <thead>
+                <tr className="bg-muted/50">
+                  {tableHeaders.map((header, headerIndex) => (
+                    <th key={headerIndex} className="border border-border px-4 py-2 text-left font-semibold">
+                      {renderInlineFormatting(header)}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {tableRows.map((row, rowIndex) => (
+                  <tr key={rowIndex} className={rowIndex % 2 === 0 ? "bg-card" : "bg-muted/20"}>
+                    {row.map((cell, cellIndex) => (
+                      <td key={cellIndex} className="border border-border px-4 py-2">
+                        {renderInlineFormatting(cell)}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+        // Reset table variables
+        tableHeaders = [];
+        tableRows = [];
+        return;
+      }
+
       // Headers
       if (line.startsWith("# ")) {
         elements.push(
@@ -113,6 +172,38 @@ export default function ArticlePage({ params }: PageProps) {
           </h3>
         );
         return;
+      }
+      if (line.startsWith("#### ")) {
+        elements.push(
+          <h4 key={index} className="text-lg font-semibold mt-4 mb-2">
+            {line.slice(5)}
+          </h4>
+        );
+        return;
+      }
+
+      // Images
+      if (line.startsWith("![")) {
+        const match = line.match(/!\[(.*?)\]\((.*?)\)/);
+        if (match) {
+          const alt = match[1];
+          const src = match[2];
+          elements.push(
+            <figure key={index} className="my-6">
+              <img 
+                src={src} 
+                alt={alt} 
+                className="w-full h-auto rounded-lg" 
+              />
+              {alt && (
+                <figcaption className="text-center text-sm text-muted-foreground mt-2">
+                  {alt}
+                </figcaption>
+              )}
+            </figure>
+          );
+          return;
+        }
       }
 
       // Blockquote
@@ -142,7 +233,7 @@ export default function ArticlePage({ params }: PageProps) {
       }
 
       // List items
-      if (line.startsWith("- ")) {
+      if (line.startsWith("- ") || line.startsWith("+ ")) {
         elements.push(
           <li key={index} className="ml-6 mb-2 list-disc">
             {renderInlineFormatting(line.slice(2))}
@@ -177,9 +268,9 @@ export default function ArticlePage({ params }: PageProps) {
     // Italic
     text = text.replace(/\*(.*?)\*/g, "<em>$1</em>");
     // Inline code
-    text = text.replace(/`([^`]+)`/g, "<code class='bg-muted px-1.5 py-0.5 rounded text-sm font-mono'>$1'</code>");
+    text = text.replace(/`([^`]+)`/g, "<code class='bg-muted px-1.5 py-0.5 rounded text-sm font-mono'>$1</code>");
     // Links
-    text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href='$2' class='text-primary hover:text-primary/80 underline underline-offset-4'>$1'</a>");
+    text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href='$2' class='text-primary hover:text-primary/80 underline underline-offset-4'>$1</a>");
 
     return <span dangerouslySetInnerHTML={{ __html: text }} />;
   };
