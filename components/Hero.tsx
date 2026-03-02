@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Typewriter from "./Typewriter";
 import TagMarquee from "./TagMarquee";
+import DirectoryTree from "./DirectoryTree";
 import { useLanguage } from "./LanguageContext";
 
 const roles = [
@@ -118,7 +119,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
           <a
             href="/articles"
@@ -133,6 +134,8 @@ export default function Hero() {
             {t('hero.viewResume')}
           </a>
         </motion.div>
+
+
       </div>
 
       {/* Scroll indicator */}

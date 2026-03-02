@@ -82,7 +82,7 @@ export default function ResidenceMapCard({
       <h2 className="text-3xl font-serif font-bold mb-4 text-center">{t('map.title')}</h2>
 
       {/* Map Card */}
-      <div className="relative w-full aspect-[3/2] sm:aspect-[16/9] rounded-xl border border-border/50 bg-card shadow-lg overflow-hidden">
+      <div className="relative w-full aspect-[3/2] sm:aspect-[16/9] rounded-xl border border-border/50 bg-card shadow-lg overflow-hidden z-10">
         {/* Map Container */}
         <MapContainer
           center={GUANGZHOU}

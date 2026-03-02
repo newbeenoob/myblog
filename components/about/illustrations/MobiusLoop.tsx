@@ -38,10 +38,20 @@ export default function MobiusLoop() {
     // Loop path drawing
     timelineRef.current.fromTo(
       loop,
-      { strokeDashoffset: 600 },
+      { strokeDashoffset: 800 },
       { strokeDashoffset: 0, duration: 2, ease: "power2.inOut" },
       0
     );
+
+    // Loop rotation
+    gsap.to(loop, {
+      rotate: 360,
+      duration: 20,
+      ease: "none",
+      repeat: -1,
+      transformOrigin: "center center",
+      immediateRender: false,
+    });
 
     // Nodes appearing
     timelineRef.current.fromTo(
@@ -69,7 +79,7 @@ export default function MobiusLoop() {
     });
 
     // Flow dot moving along path
-    gsap.to(flowDot, {
+    timelineRef.current.to(flowDot, {
       motionPath: {
         path: loop,
         align: loop,
@@ -78,6 +88,20 @@ export default function MobiusLoop() {
       duration: 8,
       ease: "none",
       repeat: -1,
+      immediateRender: false,
+    });
+
+    // Start the animation timeline
+    timelineRef.current.play();
+
+    // Glow effect for flow dot
+    gsap.to(flowDot, {
+      opacity: 0.7,
+      scale: 1.5,
+      duration: 1.5,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
     });
 
     return () => {
@@ -90,14 +114,16 @@ export default function MobiusLoop() {
     <svg
       ref={svgRef}
       viewBox="0 0 320 240"
+      preserveAspectRatio="xMidYMid meet"
       className="w-full h-full"
-      style={{ maxWidth: "420px" }}
+      style={{ maxWidth: "420px", width: "100%", height: "auto" }}
     >
       {/* Main loop path - Möbius-like shape */}
       <path
-        d="M60 120 Q60 40 160 40 Q260 40 260 120 Q260 200 160 200 Q60 200 60 120"
+        d="M60 120 C60 30 160 10 260 120 C260 230 160 250 60 120"
         className="loop-path fill-none stroke-muted-foreground/30 stroke-[2]"
-        strokeDasharray="600"
+        strokeDasharray="800"
+        strokeLinecap="round"
       />
 
       {/* Flow dot */}
@@ -148,6 +174,10 @@ export default function MobiusLoop() {
       <polygon points="265,160 260,155 260,165" className="fill-muted-foreground/30" />
       <polygon points="110,205 105,200 115,200" className="fill-muted-foreground/30" />
       <polygon points="55,80 60,85 50,85" className="fill-muted-foreground/30" />
+
+      {/* Minimal placeholder text */}
+      <text x="160" y="20" className="text-[8px] fill-muted-foreground/50 font-mono text-center" style={{ textAnchor: 'middle' }}>Code</text>
+      <text x="160" y="230" className="text-[8px] fill-muted-foreground/50 font-mono text-center" style={{ textAnchor: 'middle' }}>Feedback → Log → AI Refine → Deploy</text>
     </svg>
   );
 }

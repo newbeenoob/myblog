@@ -7,12 +7,12 @@ import LinkCard from "@/components/about/LinkCard";
 
 // Import illustrations
 import TriConverge from "@/components/about/illustrations/TriConverge";
-import StairTree from "@/components/about/illustrations/StairTree";
 import EarsFunnel from "@/components/about/illustrations/EarsFunnel";
 import BlueprintVsCode from "@/components/about/illustrations/BlueprintVsCode";
 import ConcentricGrowth from "@/components/about/illustrations/ConcentricGrowth";
 import CrystalStack from "@/components/about/illustrations/CrystalStack";
 import MobiusLoop from "@/components/about/illustrations/MobiusLoop";
+import DirectoryTree from "@/components/DirectoryTree";
 
 // Section data with prompts
 const sections = [
@@ -54,7 +54,7 @@ Keep it minimal and elegant.`,
 Connect to AI core with animated line.
 Rules-driven generation concept.
 Use depth/shadow for 3D effect.`,
-    Illustration: StairTree,
+    Illustration: DirectoryTree,
   },
   {
     number: 3,
