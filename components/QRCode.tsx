@@ -2,67 +2,26 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface QRCodeProps {
   url?: string;
+  imageSrc?: string;
   title?: string;
   description?: string;
 }
 
 export default function QRCode({
   url = "https://andrews-meditations.com",
-  title = "扫码访问",
-  description = "在手机上阅读更方便",
+  imageSrc = "/images/QRcode.png",
+  title = "关注公众号",
+  description = "扫码关注我的公众号",
 }: QRCodeProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  // Generate QR code using a simple pattern (for demo purposes)
-  // In production, you'd use a real QR code library
-  const generateQRPattern = () => {
-    const size = 21;
-    const pattern = [];
-    const modules: { row: number; col: number; filled: boolean }[] = [];
-
-    // Create position patterns
-    const addPositionPattern = (row: number, col: number) => {
-      for (let r = -1; r <= 7; r++) {
-        for (let c = -1; c <= 7; c++) {
-          const dr = row + r;
-          const dc = col + c;
-          if (dr >= 0 && dr < size && dc >= 0 && dc < size) {
-            const isOuter = r <= 0 || r >= 7 || c <= 0 || c >= 7;
-            const isInner = r >= 2 && r <= 4 && c >= 2 && c <= 4;
-            modules.push({ row: dr, col: dc, filled: isOuter || isInner });
-          }
-        }
-      }
-    };
-
-    addPositionPattern(0, 0);
-    addPositionPattern(0, size - 7);
-    addPositionPattern(size - 7, 0);
-
-    // Fill remaining with pseudo-random pattern based on URL
-    const seed = url.split("").reduce((a, b) => a + b.charCodeAt(0), 0);
-    for (let r = 0; r < size; r++) {
-      for (let c = 0; c < size; c++) {
-        const exists = modules.some((m) => m.row === r && m.col === c);
-        if (!exists) {
-          const filled = ((r * size + c + seed) % 3) === 0;
-          modules.push({ row: r, col: c, filled });
-        }
-      }
-    }
-
-    return modules;
-  };
-
-  const modules = generateQRPattern();
-  const moduleSize = 12;
 
   return (
     <motion.div
@@ -77,26 +36,14 @@ export default function QRCode({
 
       <div className="relative">
         {/* QR Code container */}
-        <div
-          className="bg-white p-3 rounded-lg shadow-inner"
-          style={{ width: modules.length > 0 ? 21 * moduleSize + 24 : 0 }}
-        >
-          <svg
-            width={21 * moduleSize}
-            height={21 * moduleSize}
+        <div className="bg-white p-3 rounded-lg shadow-inner">
+          <Image
+            src={imageSrc}
+            alt={title}
+            width={252}
+            height={252}
             className="block"
-          >
-            {modules.map((m, i) => (
-              <rect
-                key={i}
-                x={m.col * moduleSize}
-                y={m.row * moduleSize}
-                width={moduleSize}
-                height={moduleSize}
-                fill={m.filled ? "#000" : "#fff"}
-              />
-            ))}
-          </svg>
+          />
         </div>
 
         {/* Center logo overlay */}
