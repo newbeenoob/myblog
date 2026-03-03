@@ -41,8 +41,8 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.description2": "在公众号中发送消息进行反馈",
     // About
     "about.title": "关于我",
-    "about.description1": "你好，我是安德鲁（Andrew），一名热爱产品和用户体验的产品经理。",
-    "about.description2": "在这个博客里，我会分享关于产品设计、用户研究和商业策略的内容。",
+    "about.description1": "你好，我是安德鲁（Andrew），一名热爱产品和生活的产品经理。",
+    "about.description2": "在这个博客里，我会分享关于B端产品设计、行业分析、用户体验的内容。",
     "about.description3": "我相信产品应该服务于用户，设计应该有温度。",
     "about.description4": "每一个产品决策都是一次学习的机会，每一篇文章都是思考的结晶。",
     "about.learnMore": "了解更多",
@@ -93,7 +93,7 @@ const translations: Record<Language, Record<string, string>> = {
     "resume.cta.button": "联系我",
     // Articles
     "articles.title": "文章",
-    "articles.description": "探索技术、分享思考、记录成长。在这里，我会分享关于软件开发、技术探索和个人成长的内容。",
+    "articles.description": "探索技术、分享思考、记录成长。在这里，我会分享关于产品设计、产品求职和个人成长的内容。",
     "articles.all": "全部",
     "articles.empty": "暂无文章",
     "articles.emptyHint": "文章正在准备中，敬请期待...",
@@ -150,7 +150,7 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     "about.title": "About Me",
     "about.description1": "Hello, I'm Andrew, a product manager passionate about product and user experience.",
-    "about.description2": "In this blog, I share content about product design, user research, and business strategy.",
+    "about.description2": "In this blog, I share content about product design, user experience, and business analysis.",
     "about.description3": "I believe products should serve users, and design should have temperature.",
     "about.description4": "Every product decision is a learning opportunity, every article is a crystallization of thought.",
     "about.learnMore": "Learn More",
@@ -201,7 +201,7 @@ const translations: Record<Language, Record<string, string>> = {
     "resume.cta.button": "Contact Me",
     // Articles
     "articles.title": "Articles",
-    "articles.description": "Exploring technology, sharing thoughts, recording growth. Here I share software development, technical exploration, and personal growth.",
+    "articles.description": "Exploring technology, sharing thoughts, recording growth. Here I share product design, career journey, and personal growth.",
     "articles.all": "All",
     "articles.empty": "No Articles Yet",
     "articles.emptyHint": "Articles are being prepared, stay tuned...",

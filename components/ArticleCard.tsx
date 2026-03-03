@@ -47,12 +47,12 @@ export default function ArticleCard({ article, index = 0 }: ArticleCardProps) {
             </div>
 
             {/* Title */}
-            <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+            <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2 min-h-[3.6rem]">
               {article.title}
             </h3>
 
             {/* Description */}
-            <p className="text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
+            <p className="text-muted-foreground mb-4 line-clamp-2 leading-relaxed min-h-[3.6rem]">
               {article.description}
             </p>
 

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "./LanguageContext";
+import Image from "next/image";
 
 export default function ContactPopover() {
   const [isOpen, setIsOpen] = useState(false);
@@ -119,56 +120,16 @@ export default function ContactPopover() {
                   {t("contact.title")}
                 </h3>
 
-                {/* QR Code placeholder */}
+                {/* QR Code */}
                 <div className="bg-white rounded-lg p-3 mb-3">
-                  <div className="w-full aspect-square bg-gradient-to-br from-slate-100 to-slate-200 rounded-lg flex items-center justify-center">
-                    {/* Placeholder QR code pattern */}
-                    <svg
-                      viewBox="0 0 100 100"
-                      className="w-full h-full p-2"
-                    >
-                      {/* Position patterns */}
-                      <rect x="5" y="5" width="25" height="25" fill="#000" rx="3" />
-                      <rect x="10" y="10" width="15" height="15" fill="#fff" rx="2" />
-                      <rect x="13" y="13" width="9" height="9" fill="#000" rx="1" />
-
-                      <rect x="70" y="5" width="25" height="25" fill="#000" rx="3" />
-                      <rect x="75" y="10" width="15" height="15" fill="#fff" rx="2" />
-                      <rect x="78" y="13" width="9" height="9" fill="#000" rx="1" />
-
-                      <rect x="5" y="70" width="25" height="25" fill="#000" rx="3" />
-                      <rect x="10" y="75" width="15" height="15" fill="#fff" rx="2" />
-                      <rect x="13" y="78" width="9" height="9" fill="#000" rx="1" />
-
-                      {/* Data pattern (simplified) */}
-                      <rect x="35" y="5" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="45" y="5" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="55" y="5" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="35" y="15" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="50" y="15" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="60" y="15" width="5" height="5" fill="#000" rx="1" />
-
-                      <rect x="35" y="35" width="30" height="30" fill="#000" rx="4" />
-                      <rect x="40" y="40" width="20" height="20" fill="#fff" rx="3" />
-                      <text x="50" y="55" textAnchor="middle" fontSize="10" fill="#000" fontWeight="bold">A</text>
-
-                      {/* More data patterns */}
-                      <rect x="5" y="35" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="15" y="40" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="5" y="50" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="20" y="55" width="5" height="5" fill="#000" rx="1" />
-
-                      <rect x="75" y="40" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="85" y="45" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="70" y="55" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="80" y="60" width="5" height="5" fill="#000" rx="1" />
-
-                      <rect x="40" y="75" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="50" y="80" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="60" y="75" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="70" y="85" width="5" height="5" fill="#000" rx="1" />
-                      <rect x="85" y="75" width="5" height="5" fill="#000" rx="1" />
-                    </svg>
+                  <div className="w-full aspect-square rounded-lg flex items-center justify-center">
+                    <Image
+                      src="/images/QRcode.png"
+                      alt="公众号二维码"
+                      width={252}
+                      height={252}
+                      className="block"
+                    />
                   </div>
                 </div>
 
