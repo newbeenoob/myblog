@@ -223,15 +223,15 @@ author: 产品经理新人·Andrew
 
 如果对评测体系设计感兴趣，Langfuse 关于评测核心概念的文档提供了比较系统的思路，尤其在“可追溯与持续评测”方面值得参考：
 
-[https://langfuse.com/docs/evaluation/core-concepts]()
+[https://langfuse.com/docs/evaluation/core-concepts](https://langfuse.com/docs/evaluation/core-concepts)
 
 如果你对本文提到的“评测飞轮”感兴趣，强烈建议阅读 OpenAI 官方的这份实操手册。它详细拆解了如何通过构建端到端的评估流程，让提示词在不断的“测试-反馈-优化”循环中变得更加稳健，你可以把类似的工作模式复制到你熟悉的工具或者平台上：
 
-[https://developers.openai.com/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel/]()
+[Building resilient prompts using an evaluation flywheel](https://developers.openai.com/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel/)
 
 此外，Ragas 的指标体系中对多个技术指标的完整定义也很有启发性：
 
-[https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#natural-language-comparison]()
+[https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#natural-language-comparison](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/#natural-language-comparison)
 
 这些内容并不一定要全部照搬，但在构建自己的评测飞轮时，可以作为设计参考。
 

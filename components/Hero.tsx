@@ -122,8 +122,17 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
           <a
+            href="/about"
+            className="px-8 py-3 rounded-lg font-medium bg-gradient-to-r from-primary to-primary/80 text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5 relative group"
+          >
+            {t('hero.aboutSite')}
+            <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">
+              {t('hero.aboutSiteTooltip')}
+            </span>
+          </a>
+          <a
             href="/articles"
-            className="px-8 py-3 rounded-lg font-medium bg-gradient-to-r from-primary to-primary/80 text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5"
+            className="px-8 py-3 rounded-lg font-medium border border-border hover:border-primary/50 hover:bg-muted/50 transition-all duration-300"
           >
             {t('hero.browseArticles')}
           </a>

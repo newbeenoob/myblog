@@ -6,8 +6,7 @@ import PromptModal from "./PromptModal";
 
 interface SectionCardProps {
   number: number;
-  titleZh: string;
-  titleEn: string;
+  title: string;
   principle: string;
   pmThought: string;
   promptTitle: string;
@@ -18,8 +17,7 @@ interface SectionCardProps {
 
 export default function SectionCard({
   number,
-  titleZh,
-  titleEn,
+  title,
   principle,
   pmThought,
   promptTitle,
@@ -64,9 +62,8 @@ export default function SectionCard({
           {/* Title */}
           <div>
             <h3 className="text-xl lg:text-2xl font-bold text-foreground">
-              {titleZh}
+              {title}
             </h3>
-            <p className="text-sm text-muted-foreground mt-1">{titleEn}</p>
           </div>
 
           {/* Principle */}

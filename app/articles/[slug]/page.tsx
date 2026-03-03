@@ -262,6 +262,16 @@ export default function ArticlePage({ params }: PageProps) {
     return elements;
   };
 
+  // Link validation function
+  const validateLink = (url: string): boolean => {
+    try {
+      new URL(url);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+
   const renderInlineFormatting = (text: string): React.ReactNode => {
     // Bold
     text = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
@@ -269,8 +279,14 @@ export default function ArticlePage({ params }: PageProps) {
     text = text.replace(/\*(.*?)\*/g, "<em>$1</em>");
     // Inline code
     text = text.replace(/`([^`]+)`/g, "<code class='bg-muted px-1.5 py-0.5 rounded text-sm font-mono'>$1</code>");
-    // Links
-    text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href='$2' class='text-primary hover:text-primary/80 underline underline-offset-4'>$1</a>");
+    // Links with validation
+      text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
+        if (validateLink(url)) {
+          return `<a href='${url}' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-primary/80 underline underline-offset-4 flex items-center gap-1'>${text} <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 10'></path></svg></a>`;
+        } else {
+          return `<span class='text-muted-foreground'>${text}</span>`;
+        }
+      });
 
     return <span dangerouslySetInnerHTML={{ __html: text }} />;
   };

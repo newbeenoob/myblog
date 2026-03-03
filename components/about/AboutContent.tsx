@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/components/LanguageContext";
 import SectionCard from "@/components/about/SectionCard";
 import LinkCard from "@/components/about/LinkCard";
 
@@ -18,13 +19,10 @@ import DirectoryTree from "@/components/DirectoryTree";
 const sections = [
   {
     number: 1,
-    titleZh: "初始化：最简可行原则",
-    titleEn: "The Minimalist Initialization",
-    principle:
-      "拒绝过度设计，通过三点定面快速破局：核心页面、技术栈、审美风格。",
-    pmThought:
-      "在模糊中建立秩序，是产品起步阶段最高效的决策。",
-    promptTitle: "初始化 - Prompt 原文",
+    titleKey: "about.section1.title",
+    principleKey: "about.section1.principle",
+    pmThoughtKey: "about.section1.pmThought",
+    promptTitleKey: "about.section1.promptTitle",
     promptContent: `Design a triangle convergence SVG with three vertices:
 - Core UX (top)
 - Tech Stack (bottom-left)
@@ -37,13 +35,10 @@ Keep it minimal and elegant.`,
   },
   {
     number: 2,
-    titleZh: "项目空间：PM 的 AI 数字化基座",
-    titleEn: "Digital Foundation",
-    principle:
-      "将 PM 的思维逻辑转化为 AI 可理解的结构化指令集（CLI 思维）。",
-    pmThought:
-      "好的产品经理不只输出需求，更设计生产需求的工厂。",
-    promptTitle: "项目空间 - Prompt 原文",
+    titleKey: "about.section2.title",
+    principleKey: "about.section2.principle",
+    pmThoughtKey: "about.section2.pmThought",
+    promptTitleKey: "about.section2.promptTitle",
     promptContent: `Create a stair-tree directory visualization:
 .agent/
   AGENT.md
@@ -58,13 +53,10 @@ Use depth/shadow for 3D effect.`,
   },
   {
     number: 3,
-    titleZh: "SDD 规范：精确的语言桥梁",
-    titleEn: "Precision in Communication",
-    principle:
-      "统一向AI提需求的语言模式，使用 EARS (Easy Approach to Requirements Syntax) 消除歧义。",
-    pmThought:
-      "减少与 AI 的无效沟通，本质是在减少产品的开发成本。",
-    promptTitle: "SDD 规范 - Prompt 原文",
+    titleKey: "about.section3.title",
+    principleKey: "about.section3.principle",
+    pmThoughtKey: "about.section3.pmThought",
+    promptTitleKey: "about.section3.promptTitle",
     promptContent: `Design an EARS funnel model:
 - Left: fuzzy natural language inputs
 - Middle: EARS filter (When... The system shall...)
@@ -76,13 +68,10 @@ Show transformation from ambiguity to clarity.`,
   },
   {
     number: 4,
-    titleZh: "方案决策：文档先行",
-    titleEn: "Docs-First Strategy",
-    principle:
-      "在代码落地前，先进行逻辑推演。不确定的实现，由 AI 提供实现方案（Implementation Plan）进行预评审。",
-    pmThought:
-      "文档是思考的留痕，也是控制项目风险的保证。",
-    promptTitle: "文档先行 - Prompt 原文",
+    titleKey: "about.section4.title",
+    principleKey: "about.section4.principle",
+    pmThoughtKey: "about.section4.pmThought",
+    promptTitleKey: "about.section4.promptTitle",
     promptContent: `Create blueprint vs code comparison:
 - Left: semi-transparent architecture blueprint
 - Right: growing code blocks
@@ -94,13 +83,10 @@ Use subtle animations to show progression.`,
   },
   {
     number: 5,
-    titleZh: "增量迭代：螺旋式上升",
-    titleEn: "Incremental Growth",
-    principle:
-      "遵循 基础功能 → 交互优化 → 高级功能 的路径，每一层都是对上一层的加固。",
-    pmThought:
-      "快不代表乱，循序渐进才能确保每一阶段的产物都是稳定的。",
-    promptTitle: "增量迭代 - Prompt 原文",
+    titleKey: "about.section5.title",
+    principleKey: "about.section5.principle",
+    pmThoughtKey: "about.section5.pmThought",
+    promptTitleKey: "about.section5.promptTitle",
     promptContent: `Design concentric growth rings:
 - Center: MVP core
 - Second ring: UX Polish
@@ -113,13 +99,10 @@ Primary color for center, fading outward.`,
   },
   {
     number: 6,
-    titleZh: "沉淀：经验的资产化",
-    titleEn: "Knowledge Capitalization",
-    principle:
-      "里程碑完成后，将最佳实践沉淀为 .md。让下一次迭代不是重头开始，而是站在自己的肩膀上。",
-    pmThought:
-      "资产化思考，让未来迭代有迹可循。",
-    promptTitle: "经验资产化 - Prompt 原文",
+    titleKey: "about.section6.title",
+    principleKey: "about.section6.principle",
+    pmThoughtKey: "about.section6.pmThought",
+    promptTitleKey: "about.section6.promptTitle",
     promptContent: `Create crystal stacking visualization:
 - Bottom: stacked document blocks (.md files)
 - Top: iteration flow (Sprint 1, 2, 3...)
@@ -131,24 +114,17 @@ Knowledge base grows over time.`,
   },
   {
     number: 7,
-    titleZh: "回归：用户访谈与闭环",
-    titleEn: "User-Centric Loop",
-    principle:
-      "走出实验室，回归真实反馈。记录毛病、AI 修复、版本进化。",
-    pmThought:
-      "经过用户验证才是终点。",
-    promptTitle: "用户闭环 - Prompt 原文",
+    titleKey: "about.section7.title",
+    principleKey: "about.section7.principle",
+    pmThoughtKey: "about.section7.pmThought",
+    promptTitleKey: "about.section7.promptTitle",
     promptContent: `Design a Möbius loop / closed cycle:
 Feedback → Log → AI Refine → Deploy
-
-Add user feedback bubbles at Feedback point:
-- "太淡了"
-- "按钮太小"
 
 Animate continuous flow.
 Show the feedback loop never ends.`,
     Illustration: MobiusLoop,
-  },
+  }
 ];
 
 // Hero illustration - floating orbits
@@ -264,6 +240,7 @@ function HeroIllustration() {
 }
 
 export default function AboutContent() {
+  const { t } = useLanguage();
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -278,11 +255,7 @@ export default function AboutContent() {
                 transition={{ duration: 0.6 }}
                 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight mb-6"
               >
-                4天，96小时，
-                <br />
-                <span className="text-primary">以及我和我的 AI 伙伴</span>
-                <br />
-                的 124 次对话。
+                {t('about.hero.title')}
               </motion.h1>
 
               <motion.p
@@ -291,7 +264,7 @@ export default function AboutContent() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-lg text-muted-foreground"
               >
-                下面展示的，是本站的设计原则（以及它们如何被落实）
+                {t('about.hero.description')}
               </motion.p>
             </div>
 
@@ -316,11 +289,10 @@ export default function AboutContent() {
             <SectionCard
               key={section.number}
               number={section.number}
-              titleZh={section.titleZh}
-              titleEn={section.titleEn}
-              principle={section.principle}
-              pmThought={section.pmThought}
-              promptTitle={section.promptTitle}
+              title={t(section.titleKey) as string}
+              principle={t(section.principleKey) as string}
+              pmThought={t(section.pmThoughtKey) as string}
+              promptTitle={t(section.promptTitleKey) as string}
               promptContent={section.promptContent}
               illustration={<section.Illustration />}
               reversed={index % 2 === 1}
@@ -330,11 +302,11 @@ export default function AboutContent() {
 
         {/* Bottom Section */}
         <section className="py-16">
-          <h2 className="text-2xl font-serif font-bold mb-6">更多感悟</h2>
+          <h2 className="text-2xl font-serif font-bold mb-6">{t('about.moreInsights')}</h2>
           <LinkCard
-            title="智能客服的下一站：从对话到执行"
-            summary="记录我在 4 天里如何把 AI 变成协作伙伴，从 0 到 1 构建这个网站的全过程。"
-            href="/articles/ai-collaboration-journey"
+            title="4天，96小时，我如何从0到1构建一个可演进的个人网站"
+            summary="一次面试课题，也可以把它当成一个真实产品来做"
+            href="/articles/ai_ide_exper"
           />
         </section>
       </div>

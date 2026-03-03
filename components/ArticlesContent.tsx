@@ -3,6 +3,7 @@
 import ArticleList from "./ArticleList";
 import { useLanguage } from "./LanguageContext";
 import { Article } from "./ArticleCard";
+import { useState } from "react";
 
 interface ArticlesContentProps {
   articles: Article[];
@@ -11,6 +12,12 @@ interface ArticlesContentProps {
 
 export default function ArticlesContent({ articles, tags }: ArticlesContentProps) {
   const { t } = useLanguage();
+  const [selectedTag, setSelectedTag] = useState<string>("all");
+
+  // Filter articles based on selected tag
+  const filteredArticles = selectedTag === "all"
+    ? articles
+    : articles.filter((article) => article.tags.includes(selectedTag));
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -26,13 +33,18 @@ export default function ArticlesContent({ articles, tags }: ArticlesContentProps
         {/* Tags Filter */}
         <div className="mb-8">
           <div className="flex flex-wrap gap-2">
-            <span className="px-3 py-1.5 rounded-lg text-sm font-medium bg-primary text-primary-foreground">
+            <span
+              key="all"
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium cursor-pointer transition-colors ${selectedTag === "all" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"}`}
+              onClick={() => setSelectedTag("all")}
+            >
               {t("articles.all")}
             </span>
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1.5 rounded-lg text-sm font-medium bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary cursor-pointer transition-colors"
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium cursor-pointer transition-colors ${selectedTag === tag ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"}`}
+                onClick={() => setSelectedTag(tag)}
               >
                 {tag}
               </span>
@@ -41,8 +53,8 @@ export default function ArticlesContent({ articles, tags }: ArticlesContentProps
         </div>
 
         {/* Articles Grid */}
-        {articles.length > 0 ? (
-          <ArticleList articles={articles} showAll />
+        {filteredArticles.length > 0 ? (
+          <ArticleList articles={filteredArticles} showAll />
         ) : (
           <div className="text-center py-20">
             <div className="text-6xl mb-4">📝</div>
