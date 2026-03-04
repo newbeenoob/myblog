@@ -110,38 +110,38 @@ const timelineItemsEn = [
 const skillsZh = {
   pm: {
     title: "产品管理",
-    items: ["需求分析", "业务流程梳理", "原型设计", "项目管理"],
+    items: ["需求分析", "业务建模", "原型设计", "敏捷项目管理"],
   },
   data: {
     title: "数据分析",
-    items: ["数据看板", "漏斗分析", "A/B测试", "SQL"],
+    items: ["数据归因", "漏斗分析", "A/B测试", "SQL"],
   },
   ai: {
     title: "AI 产品方法论",
-    items: ["提示词工程", "评估飞轮", "知识工程", "工作流设计"],
+    items: ["提示词工程", "评估飞轮", "知识工程", "工作流编排" ],
   },
   tools: {
-    title: "工具与方法",
-    items: ["Figma", "Jira", "敏捷开发", "Cursor", "Google AI Studio"],
+    title: "效率工具",
+    items: ["Figma（设计协同）", "Jira（产研迭代）", "Cursor（AI 辅助开发与原型设计）", "Obsidian（知识库管理）"],
   },
 };
 
 const skillsEn = {
   pm: {
     title: "Product Management",
-    items: ["Requirement Analysis", "Process Mapping", "Prototyping", "Project Management"],
+    items: ["Requirement Analysis", "Process Mapping", "Prototyping", "Agile Project Management"],
   },
   data: {
     title: "Data Analysis",
-    items: ["Dashboards", "Funnel Analysis", "A/B Testing", "SQL"],
+    items: ["Data Attribution", "Funnel Analysis", "A/B Testing", "SQL"],
   },
   ai: {
     title: "AI Product Methods",
-    items: ["Prompt Engineering", "Evaluation Flywheel", "Knowledge Engineering", "Workflow Design"],
+    items: ["Prompt Engineering", "Evaluation Flywheel", "Knowledge Engineering", "Workflow Orchestration"],
   },
   tools: {
-    title: "Tools & Methods",
-    items: ["Figma", "Jira", "Agile", "Cursor", "Google AI Studio"],
+    title: "Efficiency Tools",
+    items: ["Figma", "Jira",  "Cursor", "Obsidian"],
   },
 };
 
