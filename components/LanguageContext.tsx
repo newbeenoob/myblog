@@ -93,7 +93,7 @@ const translations: Record<Language, Record<string, string>> = {
     "resume.cta.button": "联系我",
     // Articles
     "articles.title": "文章",
-    "articles.description": "探索技术、分享思考、记录成长。在这里，我会分享关于产品设计、产品求职和个人成长的内容。",
+    "articles.description": "持续更新、分享思考、记录成长。在这里，我会分享关于产品设计、产品求职和个人成长的内容。",
     "articles.all": "全部",
     "articles.empty": "暂无文章",
     "articles.emptyHint": "文章正在准备中，敬请期待...",
@@ -101,7 +101,7 @@ const translations: Record<Language, Record<string, string>> = {
     "articles.viewMore": "查看更多文章",
     "articles.author": "产品思考者",
     "articles.latest": "最新文章",
-    "articles.subtitle": "探索技术，分享思考",
+    "articles.subtitle": "在 AI 变革中，持续打磨产品思维与实践能力。",
     "articles.viewAll": "查看全部",
     // Map
     "map.title": "现居地",
@@ -118,6 +118,18 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.builtWith": "Built with",
     "footer.love": "♥",
     "footer.tech": "using Next.js & Tailwind CSS",
+    // Contact Form
+    "contactForm.title": "联系我 ✉️",
+    "contactForm.name": "姓名",
+    "contactForm.namePlaceholder": "请输入您的姓名",
+    "contactForm.email": "电子邮箱",
+    "contactForm.emailPlaceholder": "请输入您的邮箱",
+    "contactForm.message": "留言内容",
+    "contactForm.messagePlaceholder": "请输入您的留言...",
+    "contactForm.submit": "发送",
+    "contactForm.submitting": "发送中...",
+    "contactForm.close": "关闭",
+    "contactForm.success": "感谢您的留言！我会尽快回复您。",
   },
   en: {
     // Navigation
@@ -201,7 +213,7 @@ const translations: Record<Language, Record<string, string>> = {
     "resume.cta.button": "Contact Me",
     // Articles
     "articles.title": "Articles",
-    "articles.description": "Exploring technology, sharing thoughts, recording growth. Here I share product design, career journey, and personal growth.",
+    "articles.description": "keep creating, sharing thoughts, recording growth. Here I share product design, career journey, and personal growth.",
     "articles.all": "All",
     "articles.empty": "No Articles Yet",
     "articles.emptyHint": "Articles are being prepared, stay tuned...",
@@ -209,7 +221,7 @@ const translations: Record<Language, Record<string, string>> = {
     "articles.viewMore": "View More Articles",
     "articles.author": "Product Thinker",
     "articles.latest": "Latest Articles",
-    "articles.subtitle": "Exploring technology, sharing thoughts",
+    "articles.subtitle": "in AI revolution, keep creating, sharing thoughts, recording growth.",
     "articles.viewAll": "View All",
     // Map
     "map.title": "Current Location",
@@ -226,6 +238,18 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.builtWith": "Built with",
     "footer.love": "♥",
     "footer.tech": "using Next.js & Tailwind CSS",
+    // Contact Form
+    "contactForm.title": "Contact Me ✉️",
+    "contactForm.name": "Name",
+    "contactForm.namePlaceholder": "Enter your name",
+    "contactForm.email": "Email",
+    "contactForm.emailPlaceholder": "Enter your email",
+    "contactForm.message": "Message",
+    "contactForm.messagePlaceholder": "Enter your message...",
+    "contactForm.submit": "Send",
+    "contactForm.submitting": "Sending...",
+    "contactForm.close": "Close",
+    "contactForm.success": "Thank you for your message! I'll get back to you soon.",
   },
 };
 

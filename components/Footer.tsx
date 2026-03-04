@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLanguage } from "./LanguageContext";
+import ContactFormModal from "./ContactFormModal";
 
 const socialLinks = [
   {
@@ -29,7 +31,8 @@ const socialLinks = [
   },
   {
     name: "Email",
-    href: "mailto:yyandrew0319@gmail.com",
+    href: "#",
+    isEmail: true,
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -59,6 +62,14 @@ const footerLinks = [
 export default function Footer() {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const handleSocialClick = (link: typeof socialLinks[0], e: React.MouseEvent) => {
+    if (link.isEmail) {
+      e.preventDefault();
+      setIsContactModalOpen(true);
+    }
+  };
 
   return (
     <footer className="border-t border-border/50 bg-muted/30">
@@ -82,11 +93,12 @@ export default function Footer() {
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={link.isEmail ? undefined : "_blank"}
+                  rel={link.isEmail ? undefined : "noopener noreferrer"}
+                  onClick={(e) => handleSocialClick(link, e)}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-9 h-9 rounded-lg bg-muted hover:bg-primary/10 hover:text-primary flex items-center justify-center transition-colors"
+                  className="w-9 h-9 rounded-lg bg-muted hover:bg-primary/10 hover:text-primary flex items-center justify-center transition-colors cursor-pointer"
                   aria-label={link.name}
                 >
                   {link.icon}
@@ -127,6 +139,9 @@ export default function Footer() {
           </p>
         </div>
       </div>
+
+      {/* Contact Form Modal */}
+      <ContactFormModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </footer>
   );
 }
