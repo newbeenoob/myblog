@@ -1,7 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Timeline from "./Timeline";
+import ProfileCard from "./ProfileCard";
 import { useLanguage } from "./LanguageContext";
+import ContactFormModal from "./ContactFormModal";
 
 const timelineItemsZh = [
   {
@@ -144,6 +147,7 @@ const skillsEn = {
 
 export default function ResumeContent() {
   const { language, t } = useLanguage();
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const timelineItems = language === "zh" ? timelineItemsZh : timelineItemsEn;
   const skills = language === "zh" ? skillsZh : skillsEn;
@@ -160,6 +164,9 @@ export default function ResumeContent() {
               : "Recording growth milestones, sharing career journey. Every experience is a valuable asset."}
           </p>
         </header>
+
+        {/* Profile Card */}
+        <ProfileCard />
 
         {/* Skills Section */}
         <section className="mb-16">
@@ -298,8 +305,8 @@ export default function ResumeContent() {
             <p className="text-muted-foreground mb-6">
               {t("resume.cta.description")}
             </p>
-            <a
-              href="mailto:hello@andrews-meditations.com"
+            <button
+              onClick={() => setIsContactModalOpen(true)}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium bg-gradient-to-r from-primary to-primary/80 text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5"
             >
               <svg
@@ -316,7 +323,8 @@ export default function ResumeContent() {
                 />
               </svg>
               {t("resume.cta.button")}
-            </a>
+            </button>
+            <ContactFormModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
           </div>
         </section>
       </div>

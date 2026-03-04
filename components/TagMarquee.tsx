@@ -22,17 +22,18 @@ const tagColors = [
 
 const tagTranslations: Record<string, { zh: string; en: string }> = {
   "产品设计": { zh: "产品设计", en: "Product Design" },
-  "B端产品新人": { zh: "B端产品新人", en: "B2B PM Beginner" },
+  "B端产品": { zh: "B端产品", en: "2B Product" },
   "AI coding": { zh: "AI coding", en: "AI Coding" },
   "敏捷开发": { zh: "敏捷开发", en: "Agile Dev" },
   "项目管理": { zh: "项目管理", en: "Project Mgmt" },
-  "AI教育": { zh: "AI教育", en: "AI Education" },
+  "AI教育": { zh: "AI+教育", en: "AI Education" },
   "AI客服": { zh: "AI客服", en: "AI Customer Service" },
-  "AI内容营销": { zh: "AI内容营销", en: "AI Content Marketing" },
+  "AI内容营销": { zh: "AI+营销", en: "AI Marketing" },
   "评估飞轮": { zh: "评估飞轮", en: "Evaluation Flywheel" },
   "知识工程": { zh: "知识工程", en: "Knowledge Eng" },
   "数据驱动决策": { zh: "数据驱动决策", en: "Data-Driven Decisions" },
-  "ENFJ": { zh: "ENFJ", en: "ENFJ" },
+  "企业数字化转型": { zh: "企业数字化转型", en: "Enterprise Digital Transformation" },
+  "AI-Native": { zh: "AI-Native", en: "AI-Native" },
   "产品求职": { zh: "产品求职", en: "PM Job Search" },
 };
 
